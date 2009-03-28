@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/haddock
+lib/haddock.rb
+test/test_haddock.rb

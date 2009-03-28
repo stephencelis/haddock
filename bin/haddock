@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+$: << File.dirname(__FILE__) + "/../lib"
+require "optparse"
+require "haddock"
+include Haddock
+
+parser = OptionParser.new do |opts|
+  opts.banner = "usage: #{File.basename($0)} [options]"
+
+  opts.on("-h", "--help") do
+    puts opts
+    exit
+  end
+
+  opts.on("-l", "--length [length]") do |value|
+    @length = value
+  end
+
+  opts.on("-f", "--words [words file]") do |value|
+    Password.diction = value
+  end
+end
+
+begin
+  parser.parse!
+  puts @length ? Password.generate(@length) : Password.generate
+rescue OptionParser::ParseError, Password::LengthError => error
+  warn "haddock: #{error.message} " +
+    "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
+  puts parser
+  exit 1
+end
