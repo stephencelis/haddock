@@ -14,7 +14,8 @@ parser = OptionParser.new do |opts|
   end
 
   opts.on("-l", "--length [length]") do |value|
-    @length = value
+    raise Password::LengthError, "Invalid length" if value.match(/\D/)
+    @length = value.to_i
   end
 
   opts.on("-f", "--words [words file]") do |value|
@@ -28,6 +29,11 @@ begin
 rescue OptionParser::ParseError, Password::LengthError => error
   warn "haddock: #{error.message} " +
     "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
+  puts parser
+  exit 1
+rescue Password::NoWordsError => error
+  warn "haddock: #{error.message}."
+  puts "Word lists are available here: http://wordlist.sourceforge.net"
   puts parser
   exit 1
 end

@@ -21,7 +21,7 @@ class TestHaddock < Test::Unit::TestCase
   end
 
   def test_accepts_alternate_wordlist
-    Password.diction = path = File.dirname(__FILE__) + "/names"
+    Password.diction = path = File.dirname(__FILE__) + "/names.txt"
     pattern = Regexp.new File.read(path).split.join("|")
     assert_match(pattern, Password.generate(14))
   ensure
@@ -43,6 +43,18 @@ class TestHaddock < Test::Unit::TestCase
   def test_fail_on_invalid
     assert_raise Password::LengthError do
       Password.generate("invalid")
+    end
+  end
+
+  def test_fail_on_invalid_path
+    assert_raise Password::NoWordsError do
+      Password.diction = "invalid/path"
+    end
+  end
+
+  def test_fail_on_nil_path
+    assert_raise Password::NoWordsError do
+      Password.diction = nil
     end
   end
 end
