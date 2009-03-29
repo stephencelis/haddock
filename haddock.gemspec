@@ -2,17 +2,17 @@
 
 Gem::Specification.new do |s|
   s.name = %q{haddock}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Celis"]
   s.date = %q{2009-03-29}
-  s.default_executable = %q{haddock}
+  s.default_executable = %q{ha-gen}
   s.description = %q{A more memorable password generator. Swordfish? No, I got tired of that. I changed it.}
   s.email = ["stephen@stephencelis.com"]
-  s.executables = ["haddock"]
+  s.executables = ["ha-gen"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
-  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "bin/haddock", "lib/haddock.rb", "test/names.txt", "test/test_haddock.rb"]
+  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "bin/ha-gen", "lib/haddock.rb", "test/names.txt", "test/test_haddock.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/stephencelis/haddock}
   s.rdoc_options = ["--main", "README.txt"]

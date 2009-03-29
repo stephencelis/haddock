@@ -1,3 +1,10 @@
+=== 0.2.0 / 2009-03-29
+
+* 1 major enhancement
+
+  * Changed "haddock" to "ha-gen" for Haskell compliance.
+
+
 === 0.1.1 / 2009-03-29
 
 * 2 minor enhancements

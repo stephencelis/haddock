@@ -28,23 +28,24 @@ In your apps:
 
 On the command line:
 
-  % haddock
+  % ha-gen
   bowl9&bracky
-  % haddock -l31
+  % ha-gen -l31
   symbolistically5<overthwartways
 
 
 == REQUIREMENTS
 
 A newline-delimited words file. By default, it uses "/usr/share/dict/words" or
-"/usr/share/words". Otherwise:
+"/usr/share/wo".
+Otherwise:
 
   Haddock::Password.diction = "/path/to/words"
 
 
 Or:
 
-  % haddock -w /path/to/words
+  % ha-gen -w /path/to/words
 
 
 == INSTALL

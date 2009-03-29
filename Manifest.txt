@@ -2,7 +2,7 @@ History.txt
 Manifest.txt
 README.txt
 Rakefile
-bin/haddock
+bin/ha-gen
 lib/haddock.rb
 test/names.txt
 test/test_haddock.rb

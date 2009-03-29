@@ -10,7 +10,7 @@ parser = OptionParser.new do |opts|
 
   opts.on("-V", "--version") do
     require 'capistrano/version'
-    puts "haddock: v#{Haddock::VERSION}"
+    puts "#{File.basename($0)}: v#{Haddock::VERSION}"
     exit
   end
 
@@ -33,12 +33,12 @@ begin
   parser.parse!
   puts @length ? Password.generate(@length) : Password.generate
 rescue OptionParser::ParseError, Password::LengthError => error
-  warn "haddock: #{error.message} " +
+  warn "#{File.basename($0)}: #{error.message} " +
     "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
   puts parser
   exit 1
 rescue Password::NoWordsError => error
-  warn "haddock: #{error.message}."
+  warn "#{File.basename($0)}: #{error.message}."
   puts "Word lists are available here: http://wordlist.sourceforge.net"
   puts parser
   exit 1
