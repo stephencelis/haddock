@@ -8,6 +8,12 @@ include Haddock
 parser = OptionParser.new do |opts|
   opts.banner = "usage: #{File.basename($0)} [options]"
 
+  opts.on("-V", "--version") do
+    require 'capistrano/version'
+    puts "haddock: v#{Haddock::VERSION}"
+    exit
+  end
+
   opts.on("-h", "--help") do
     puts opts
     exit

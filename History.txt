@@ -1,3 +1,11 @@
+=== 0.1.1 / 2009-03-29
+
+* 2 minor enhancements
+
+  * Add version option to command-line utility.
+  * Bumping up version numbers to improve credibility.
+
+
 === 0.1.0 / 2009-03-29
 
 * 2 minor enhancements
