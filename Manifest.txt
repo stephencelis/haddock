@@ -4,4 +4,5 @@ README.txt
 Rakefile
 bin/haddock
 lib/haddock.rb
+test/names.txt
 test/test_haddock.rb
