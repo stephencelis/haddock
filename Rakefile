@@ -5,4 +5,5 @@ require "haddock"
 
 Hoe.new('haddock', Haddock::VERSION) do |p|
   p.developer('Stephen Celis', 'stephen@stephencelis.com')
+  p.remote_rdoc_dir = ''
 end

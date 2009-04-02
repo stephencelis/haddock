@@ -34,6 +34,11 @@ On the command line:
   symbolistically5<overthwartways
 
 
+For more information:
+
+http://stephencelis.com/2009/03/29/whats-the-password-haddock.html
+
+
 == REQUIREMENTS
 
 A newline-delimited words file. By default, it uses "/usr/share/dict/words" or
@@ -51,9 +56,14 @@ Or:
 
 == INSTALL
 
+RubyForge:
+
+  % gem install haddock
+
+
 GitHub:
 
-  sudo gem install stephencelis-haddock --source=http://gems.github.com
+  % gem install stephencelis-haddock --source=http://gems.github.com
 
 
 == LICENSE
