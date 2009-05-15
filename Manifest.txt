@@ -1,6 +1,7 @@
-History.txt
+.autotest
+History.rdoc
 Manifest.txt
-README.txt
+README.rdoc
 Rakefile
 bin/ha-gen
 lib/haddock.rb

@@ -1,3 +1,11 @@
+=== 0.2.1 / 2009-05-14
+
+* 1 major, minor enhancement
+
+  * Ruby 1.9 compatibility.
+
+
+
 === 0.2.0 / 2009-03-29
 
 * 1 major enhancement
