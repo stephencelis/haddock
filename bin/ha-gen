@@ -9,7 +9,6 @@ parser = OptionParser.new do |opts|
   opts.banner = "usage: #{File.basename($0)} [options]"
 
   opts.on("-V", "--version") do
-    require 'capistrano/version'
     puts "#{File.basename($0)}: v#{Haddock::VERSION}"
     exit
   end

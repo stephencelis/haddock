@@ -33,7 +33,7 @@ module Haddock
 
         begin
           words = %W(#{random_word} #{random_symbol}#{random_word})
-          words_length = words.to_s.length
+          words_length = words.join.length
         end until words_length < length && words_length > words_limit
 
         words.join random_number(length - words_length)
