@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 changed it.}
   s.email = ["stephen@stephencelis.com"]
   s.executables = ["ha-gen"]
-  s.extra_rdoc_files = ["Manifest.txt"]
+  s.extra_rdoc_files = ["History.rdoc", "Manifest.txt", "README.rdoc"]
   s.files = [".autotest", "History.rdoc", "Manifest.txt", "README.rdoc", "Rakefile", "bin/ha-gen", "lib/haddock.rb", "test/names.txt", "test/test_haddock.rb"]
   s.homepage = %q{http://github.com/stephencelis/haddock}
   s.rdoc_options = ["--main", "README.rdoc"]
