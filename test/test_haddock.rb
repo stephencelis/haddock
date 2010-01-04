@@ -30,8 +30,8 @@ class TestHaddock < Test::Unit::TestCase
   end
 
   def test_accepts_alternate_symbols_list
-    Password.delimiters = "!"
-    assert_equal "!", Password.send(:random_delimiter)
+    Password.delimiters = "X"
+    assert_equal "X", Password.send(:random_delimiter)
   end
 
   def test_fail_on_too_short
