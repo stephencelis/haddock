@@ -36,12 +36,12 @@ OptionParser.new do |opts|
   rescue OptionParser::ParseError, Password::LengthError => error
     warn "#{File.basename($0)}: #{error.message} " +
       "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
-    puts parser
+    puts opts
     abort
   rescue Password::NoWordsError => error
     warn "#{File.basename($0)}: #{error.message}."
     puts "Word lists are available here: http://wordlist.sourceforge.net"
-    puts parser
+    puts opts
     abort
   end
 end
