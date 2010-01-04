@@ -1,7 +1,7 @@
 # A more memorable password generator. Swordfish? No, I got tired of that. I
 # changed it.
 module Haddock
-  VERSION = '0.2.1'
+  VERSION = '0.2.2'
 
   module Password
     # The minimum password legnth.
