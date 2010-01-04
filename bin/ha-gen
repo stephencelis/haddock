@@ -5,7 +5,7 @@ require "optparse"
 require "haddock"
 include Haddock
 
-parser = OptionParser.new do |opts|
+OptionParser.new do |opts|
   opts.banner = "usage: #{File.basename($0)} [options]"
 
   opts.on("-V", "--version") do
@@ -18,27 +18,30 @@ parser = OptionParser.new do |opts|
     exit
   end
 
-  opts.on("-l", "--length [length]") do |value|
-    raise Password::LengthError, "Invalid length" if value.match(/\D/)
-    @length = value.to_i
+  opts.on("-l", "--length [length]", Integer) do |value|
+    @length = value
   end
 
   opts.on("-f", "--words [words file]") do |value|
     Password.diction = value
   end
-end
 
-begin
-  parser.parse!
-  puts @length ? Password.generate(@length) : Password.generate
-rescue OptionParser::ParseError, Password::LengthError => error
-  warn "#{File.basename($0)}: #{error.message} " +
-    "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
-  puts parser
-  exit 1
-rescue Password::NoWordsError => error
-  warn "#{File.basename($0)}: #{error.message}."
-  puts "Word lists are available here: http://wordlist.sourceforge.net"
-  puts parser
-  exit 1
+  opts.on("-d", "--delimiters [symbols]") do |value|
+    Password.delimiters = value
+  end
+
+  begin
+    opts.parse!
+    puts @length ? Password.generate(@length) : Password.generate
+  rescue OptionParser::ParseError, Password::LengthError => error
+    warn "#{File.basename($0)}: #{error.message} " +
+      "(must be between #{Password::MINIMUM} and #{Password::MAXIMUM})."
+    puts parser
+    abort
+  rescue Password::NoWordsError => error
+    warn "#{File.basename($0)}: #{error.message}."
+    puts "Word lists are available here: http://wordlist.sourceforge.net"
+    puts parser
+    abort
+  end
 end

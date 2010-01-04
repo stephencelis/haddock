@@ -4,15 +4,21 @@ module Haddock
   VERSION = '0.2.1'
 
   module Password
+    # The minimum password legnth.
     MINIMUM = 8
+
+    # The maximum password length.
     MAXIMUM = 31
+
+    # The default password length.
     DEFAULT = 12
 
-    SYMBOLS = '`~!@#$%^&*()-_=+[{]}\\|;:\'",<.>/?'
+    # Paths used to detect default words files.
+    PATHS = %w(/usr/share/dict/words /usr/share/words)
+
+    @@delimiters = '`~!@#$%^&*()-_=+[{]}\\|;:\'",<.>/?'
 
     class << self
-      @@paths = %w(/usr/share/dict/words /usr/share/words)
-
       # Generates a more memorable password. Its one optional argument
       # determines the length of the generated password, and cannot be less
       # than 8 or greater than 31 characters (default: 12).
@@ -22,7 +28,7 @@ module Haddock
       #   Password.generate(8)  # => "amy7@rax"
       def generate(length = DEFAULT)
         unless defined? @@diction
-          self.diction = @@paths.find { |path| File.exist? path }
+          self.diction = PATHS.find { |path| File.exist? path }
         end
 
         raise LengthError, "Invalid length" unless length.is_a? Integer
@@ -32,7 +38,7 @@ module Haddock
         words_limit = length * 0.75 # Ensure over-proportionate word lengths.
 
         begin
-          words = %W(#{random_word} #{random_symbol}#{random_word})
+          words = %W(#{random_word} #{random_delimiter}#{random_word})
           words_length = words.join.length
         end until words_length < length && words_length > words_limit
 
@@ -51,14 +57,21 @@ module Haddock
         raise NoWordsError, "No words file at #{path.inspect}"
       end
 
+      # Sets the list of characters that can delimit words. Default:
+      #
+      #   `~!@#$%^&*()-_=+[{]}\|;:'",<.>/?
+      def delimiters=(string)
+        @@delimiters = string
+      end
+
       private
 
       def random_word
         @@diction[rand(@@diction.length)].chomp
       end
 
-      def random_symbol
-        SYMBOLS[rand(SYMBOLS.length), 1]
+      def random_delimiter
+        @@delimiters[rand(@@delimiters.length), 1]
       end
 
       def random_number(digits)

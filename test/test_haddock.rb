@@ -11,7 +11,8 @@ class TestHaddock < Test::Unit::TestCase
   end
 
   def test_password_format
-    symbols = "[#{Regexp.quote Password::SYMBOLS}]"
+    symbols = Password.send :class_variable_get, :@@delimiters
+    symbols = "[#{Regexp.quote symbols}]"
     pattern = /^[a-z]+[0-9]+#{symbols}{1}[a-z]+/i
     assert_match(pattern, Password.generate)
   end
@@ -26,6 +27,11 @@ class TestHaddock < Test::Unit::TestCase
     assert_match(pattern, Password.generate(14))
   ensure
     Password.diction = "/usr/share/dict/words"
+  end
+
+  def test_accepts_alternate_symbols_list
+    Password.delimiters = "!"
+    assert_equal "!", Password.send(:random_delimiter)
   end
 
   def test_fail_on_too_short
